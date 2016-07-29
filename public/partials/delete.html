@@ -1,0 +1,49 @@
+<div ng-controller="DeletePetCtrl as uuc">
+    <h1>Delete Pet</h1>
+
+    <form id="DeletePetForm" name="DeletePetForm" class="form-horizontal" role="form"
+          ng-submit="uuc.deletePet()">
+        <legend class="sm-col-12">Basic Information</legend>
+
+        <div class="form-group">
+            <label id="lbl_name" for="name" class="col-sm-4 control-label">Name</label>
+
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="name" id="name" placeholder=""
+                       ng-model="uuc.pet.name" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_age" for="age" class="col-sm-4 control-label"
+                   is-required="CreatePetForm.age">Age</label>
+
+            <div class="col-sm-8">
+                <input type="number" class="form-control" name="age" id="age"
+                       ng-model="uuc.pet.age" readonly>
+            </div>
+        </div>
+		
+        <div class="form-group">
+            <label id="lbl_sex" for="sex" class="col-sm-4 control-label">Sex</label>
+
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="sex" id="sex" placeholder=""
+                       ng-model="uuc.pet.sex" readonly>
+            </div>
+        </div>
+
+        <pre>{{ uuc.pet | json }}</pre>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8 text-right">
+                <a ng-href="/#/" id="btn_cancel" class="btn btn-warning">Cancel</a>
+
+                <button type="submit" class="btn btn-success" id="btn_create">Delete Pet</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+

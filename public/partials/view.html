@@ -1,0 +1,64 @@
+
+
+    <div ng-controller="PetCtrl as uc">
+        <div>
+            <div class="form-group">
+                <h3>
+                    Pets
+                    <a ng-href="/#/pets/create" class="btn btn-primary pull-right" id="btn_pet_create">Add Pet</a>
+                </h3>
+                <hr>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" ng-model="searchText" placeholder="Type here to filter Pets...">
+                <hr>
+            </div>
+
+
+            <table id="pet_list" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+					<th>Sex</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="usr in uc.pets | filter:searchText">
+                    <td>
+                        {{ usr.name }}
+                    </td>
+                    <td>
+                        {{ usr.age }}
+                    </td>
+                    <td>
+                        {{ usr.sex }}
+                    </td>                 
+					<td colspan="10" padding-right>
+                        <a ng-href="/#/pets/delete/{{usr.name}}/{{usr.sex}}" class="btn btn-warning pull-right" id="btn_pet_delete">Delete Pet</a>      
+						<a ng-href="/#/pets/edit/{{usr.name}}/{{usr.sex}}" class="btn btn-success pull-right" id="btn_pet_update">Edit Pet</a>						
+                    </td>
+                </tr>
+                <tr ng-hide="uc.pets.length">
+                    <td colspan="3">
+                        <p class="text-center">No Pets Found</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h3>
+                Debug
+            </h3>
+            <hr>
+            <accordion>
+                <accordion-group is-open="status.open">
+                    <accordion-heading>
+                        Json Data <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </accordion-heading>
+                    <pre>{{ uc.pets | json }}</pre>
+                </accordion-group>
+            </accordion>
+        </div>
+
+    </div>
